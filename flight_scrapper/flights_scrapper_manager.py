@@ -10,22 +10,22 @@ agents = ["Firefox/66.0.3", "Chrome/73.0.3683.68", "Edge/16.16299"]
 
 
 for flight in range(len(type_list)):
-    agent = agents[(flight % len(agents))]
+    agent_kayak = agents[(flight % len(agents))]
+    agent_momondo = agents[(flight % len(agents) + 1)]
     if type_list[flight] == 'ONE_WAY':
-        #print(type_list[flight])
         flight_kayak = kayak_flights_search_oneway(depart_city_list[flight], dest_city_list[flight],
-                                                   depart_date_list[flight], agent)
+                                                   depart_date_list[flight], agent_kayak)
 
         flight_momondo = momondo_flights_search_oneway(depart_city_list[flight], dest_city_list[flight],
-                                                       depart_date_list[flight], agent)
+                                                       depart_date_list[flight], agent_momondo)
         flight_kayak_list.append(flight_kayak)
         flight_momondo_list.append(flight_momondo)
     else:
         flight_kayak = kayak_flights_search_return(depart_city_list[flight], dest_city_list[flight],
-                                                   depart_date_list[flight], days_list[flight], agent)
+                                                   depart_date_list[flight], days_list[flight], agent_kayak)
 
         flight_momondo = momondo_flights_search_return(depart_city_list[flight], dest_city_list[flight],
-                                                       depart_date_list[flight], days_list[flight], agent)
+                                                       depart_date_list[flight], days_list[flight], agent_momondo)
         flight_kayak_list.append(flight_kayak)
         flight_momondo_list.append(flight_momondo)
 
